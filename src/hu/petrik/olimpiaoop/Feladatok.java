@@ -3,8 +3,11 @@ package hu.petrik.olimpiaoop;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Feladatok {
@@ -16,6 +19,8 @@ public class Feladatok {
         this.adatok = new HashMap<>();
         Beolvasas();
         kiir();
+        hanySportAg();
+        hanyVersenyzo();
 
     }
 
@@ -61,6 +66,35 @@ public class Feladatok {
             }
 
             System.out.println();
+
+        }
+
+    }
+
+    private void hanySportAg() {
+
+        System.out.println("A sportágak száma: " + adatok.size());
+
+    }
+
+    private void hanyVersenyzo() {
+
+        HashSet<String> nevek = new HashSet<>();
+        for (Map.Entry<String, ArrayList<Versenyzo>> e : adatok.entrySet()) {
+
+            for (Versenyzo i : e.getValue()) {
+
+                nevek.add(i.getNev());
+
+            }
+
+        }
+
+        System.out.println("Versenyzők száma: ");
+
+        for (String i : nevek) {
+
+            System.out.println(i);
 
         }
 
