@@ -10,19 +10,21 @@ public class IdoSzerintiComparator implements Comparator<Versenyzo> {
 
         int valasz;
 
-        if (v1.getMp() > v2.getMp()) {
+        //if (v1.getMp() > v2.getMp()) {
+//
+        //    valasz = 1;
+//
+        //} else if (v1.getMp() < v2.getMp()) {
+//
+        //    valasz = -1;
+//
+        //} else {
+//
+        //    valasz = 0;
+//
+        //}
 
-            valasz = 1;
-
-        } else if (v1.getMp() < v2.getMp()) {
-
-            valasz = -1;
-
-        } else {
-
-            valasz = 0;
-
-        }
+        return v1.getMp() - v2.getMp();
 
     }
 }

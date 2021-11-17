@@ -100,4 +100,28 @@ public class Feladatok {
 
     }
 
+    private void IdoszeintiRendezes() {
+
+        for (Map.Entry<String, ArrayList<Versenyzo>> entry : adatok.entrySet() ) {
+
+            entry.getValue().sort(new IdoSzerintiComparator());
+
+        }
+
+    }
+
+    private void legtobbGyoztes() {
+
+        HashMap<String, Integer> gyoztes = new HashMap<>();
+
+        for (Map.Entry<String, ArrayList<Versenyzo>> entry : adatok.entrySet() ) {
+
+            String nev = entry.getValue().get(0).getNev();
+            gyoztes.putIfAbsent(nev, 0);
+            gyoztes.put(nev, gyoztes.get(nev) + 1);
+
+        }
+
+    }
+
 }
