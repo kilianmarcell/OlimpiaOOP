@@ -5,10 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.GenericArrayType;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class Feladatok {
 
@@ -18,9 +15,11 @@ public class Feladatok {
 
         this.adatok = new HashMap<>();
         Beolvasas();
-        kiir();
         hanySportAg();
         hanyVersenyzo();
+        legtobbGyoztes();
+        NevsorSzerintRendezes();
+        kiir();
 
     }
 
@@ -119,6 +118,30 @@ public class Feladatok {
             String nev = entry.getValue().get(0).getNev();
             gyoztes.putIfAbsent(nev, 0);
             gyoztes.put(nev, gyoztes.get(nev) + 1);
+
+        }
+
+        ArrayList<Map.Entry<String, Integer>> ee = new ArrayList<>(gyoztes.entrySet());
+
+        ee.sort(new HashMapComparator());
+
+        for (Map.Entry<String, Integer> entry : ee) {
+
+            System.out.println(entry);
+
+        }
+
+        Collections.sort(ee, Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        System.out.println("A győztes neve: " + ee.get(0));
+
+    }
+
+    private void NevsorSzerintRendezes() {
+
+        for (Map.Entry<String, ArrayList<Versenyzo>> entry : adatok.entrySet() ) {
+
+            entry.getValue().sort(new NevsorSzerintiComparator());
 
         }
 
